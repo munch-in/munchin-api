@@ -1,0 +1,15 @@
+# Removing deployment artifacts
+node_modules/
+
+# Ignore WebStorm project data.
+.idea/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# ignore yarn.lock
+yarn.lock
