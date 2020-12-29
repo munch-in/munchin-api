@@ -1,8 +1,12 @@
-const App = require('./app');
+import mongoose from 'mongoose';
+import App from './app';
 
-const app = App.createApp();
+const app = App();
 
-const port = process.env.MUNCHIN_API_PORT || 8000;
+const port = process.env.PORT || 8000;
+const dbUri = process.env.MONGO_URI;
+const dbUsername = process.env.MONGO_USERNAME;
+const dbPassword = process.env.MONGO_PASSWORD;
 
 const listen = function() {
   app.listen(port);
@@ -10,7 +14,10 @@ const listen = function() {
 };
 
 const main = function() {
-  // TODO set up db:
+  mongoose.connect(dbUri, {
+    user: dbUsername,
+    pass: dbPassword,
+  });
   listen();
 };
 
