@@ -1,11 +1,10 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 import {Service, Inject} from 'typedi';
 import {IUser} from '../interfaces/IUser';
 import {Model} from 'mongoose';
 
 @Service()
 export default class AuthService {
-
   @Inject('logger')
   private logger: any;
 
@@ -16,5 +15,4 @@ export default class AuthService {
     this.logger.log();
     return await this.userModel.create({email: email});
   }
-
 }

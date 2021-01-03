@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
     "alwaysStrict": true,
     "esModuleInterop": true,
@@ -14,7 +14,7 @@
     "src"
   ],
   "exclude": [
-    "node_modules"
+    "./node_modules/"
   ],
   "emitDecoratorMetadata": true,
   "experimentalDecorators": true
