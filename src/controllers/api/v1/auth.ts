@@ -8,11 +8,11 @@ const login = async function (req, res) {
 
 const register = async function (req, res) {
   const authService = Container.get(AuthService);
-  const user = await authService.Register('test');
+  const user = await authService.Register(req.body.email, req.body.password);
   res.status(200).json({email: 'test'});
 };
 
 export function addRoutes(router: express.Router) {
   router.post('/login', login);
-  router.get('/register', register);
+  router.post('/register', register);
 }

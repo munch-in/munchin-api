@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import express from 'express';
 import {Container} from 'typedi';
 
@@ -16,8 +17,8 @@ const logger = {
  */
 export default function createApp() {
   const app = express();
+  app.use(bodyParser.json());
   app.use(...ApiBase.createRouter('/api/v1', AuthRoutes));
-  console.log(UserModel.find);
   Container.set('userModel', UserModel);
   Container.set('logger', logger);
   return app;

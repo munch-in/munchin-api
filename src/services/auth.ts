@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import bcrypt from 'bcrypt';
 import {Service, Inject} from 'typedi';
 import {IUser} from '../interfaces/IUser';
 import {Model} from 'mongoose';
@@ -11,8 +12,12 @@ export default class AuthService {
   @Inject('userModel')
   private userModel: Model<IUser>;
 
-  public async Register(email: string): Promise<IUser> {
-    this.logger.log();
-    return await this.userModel.create({email: email});
+  public async Register(email: string, password: string): Promise<IUser> {
+    const hash = await bcrypt.hash(password, process.env.SALT_ROUNDS);
+    return await this.userModel.create({email: email, password: hash});
   }
+
+  // public async Login(email: string, password: string): Promise<IUser> {
+  //
+  // }
 }
