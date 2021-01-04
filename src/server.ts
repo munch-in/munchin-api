@@ -1,4 +1,4 @@
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import App from './app';
 
 export const app = App();
@@ -14,12 +14,12 @@ const listen = function () {
 };
 
 const main = function () {
-  // mongoose.connect(dbUri, {
-  //   useNewUrlParser: true,
-  //   useUnifiedTopology: true,
-  //   user: dbUsername,
-  //   pass: dbPassword,
-  // });
+  mongoose.connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    user: dbUsername,
+    pass: dbPassword,
+  });
   listen();
 };
 
