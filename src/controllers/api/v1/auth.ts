@@ -24,6 +24,7 @@ const register = async function (req, res) {
 };
 
 export function addRoutes(router: express.Router) {
+  console.log('adding routes');
   router.get('/test', testRoute);
   router.post('/login', login);
   router.post('/register', register);
