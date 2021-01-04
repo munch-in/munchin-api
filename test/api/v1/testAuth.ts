@@ -1,22 +1,30 @@
 import {assert} from 'chai';
 import request from 'supertest';
-import {Container} from 'typedi';
 import {app} from '../../../src/server';
-import AuthService from '../../../src/services/auth';
+import {initializeForTesting} from '../../base';
 
-describe('auth routes', () => {
-  before(() => {
-    const authService = {
-      async Register() {
-        console.log('que?');
-        return;
-      },
-    };
-    Container.set(AuthService, authService);
+describe('user auth e2e', () => {
+  before(async () => {
+    await initializeForTesting();
   });
 
-  it('test inject', async () => {
-    const res = await request(app).get('/api/v1/register').expect(200);
-    assert.equal(res.body.email, 'test');
+  it('register', async () => {
+    await request(app)
+      .post('/api/v1/register')
+      .send({
+        email: 'newuser@munchin.com',
+        password: 'password',
+      })
+      .expect(200);
+  });
+
+  it('login', async () => {
+    await request(app)
+      .post('/api/v1/login')
+      .send({
+        email: 'newuser@munchin.com',
+        password: 'password',
+      })
+      .expect(200);
   });
 });
