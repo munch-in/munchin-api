@@ -20,7 +20,7 @@ const main = function () {
     user: dbUsername,
     pass: dbPassword,
   });
-  console.log('connected to mongodb');
+  console.log('connected to db');
   listen();
 };
 
