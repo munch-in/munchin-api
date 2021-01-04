@@ -3,6 +3,7 @@ import {Container} from 'typedi';
 import AuthService from '../../../services/auth';
 
 const testRoute = function(req, res) {
+  console.log('hit the route');
   res.send('test');
 };
 
