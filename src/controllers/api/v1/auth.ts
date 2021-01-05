@@ -1,10 +1,11 @@
 import express = require('express');
 import {Container} from 'typedi';
 import AuthService from '../../../services/auth';
+import User from '../../../models/user';
 
-const testRoute = function(req, res) {
-  console.log('hit the route');
-  res.send('test');
+const testRoute = async function(req, res) {
+  let user = await User.findOne({email: 'brian@test.com'});
+  res.send(user.email);
 };
 
 const login = async function (req, res) {
